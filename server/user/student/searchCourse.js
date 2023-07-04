@@ -1,0 +1,29 @@
+var connection = require('../../service/connection')
+var validate_token = require('../../authentication/authenticate')
+
+module.exports =async function search_course(req , res){
+    try{
+        var validity = await validate_token(req , 2)
+        console.log(validity)
+        if (!validity.condition){
+            res.send("not valid")
+            return
+        }
+    }
+    catch{
+        console.log("catch")
+        res.send("not valid")
+        return
+    }
+    try{
+        connection.query("SELECT * FROM course WHERE course_title LIKE '"+req.params.key+"%'", function (err, result, fields) {
+            if (err) res.send(err);
+            res.send(result)   
+          });
+}
+catch{
+    console.log("catch")
+    res.send("not valid")
+    return
+}
+}

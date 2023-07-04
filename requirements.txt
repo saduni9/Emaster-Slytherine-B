@@ -1,0 +1,2 @@
+npm install express dotenv jsonwebtoken cors path body-parser
+npm i mysql
