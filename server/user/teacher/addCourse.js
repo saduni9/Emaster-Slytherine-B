@@ -1,5 +1,14 @@
 var connection = require('../../service/connection')
 var validate_token = require('../../authentication/authenticate')
+var nodemailer = require("nodemailer");
+
+const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "lenzzhasthiyit@gmail.com",
+      pass: "mfmpeqgzbjbxkcja",
+    },
+  });
 
 module.exports = async function add_course(req , res){
     try{
@@ -20,8 +29,51 @@ module.exports = async function add_course(req , res){
         connection.query(sql, function (err, result, fields) {
         if (err) res.send(err);
         else{
-            res.send("success")
-        }
+           
+
+            try{
+
+             var sql = "SELECT email FROM user WHERE role = 'student'"
+             connection.query(sql, function (err, result, fields) {
+                 if (err) res.send(err);
+                 else{ 
+                     
+                     for (var i=0;i<result.length;i++){
+                         const mailOptions = {
+                             from: "Emaster@gmail.com",
+                             to: result[i].email,
+                             subject: "<b>New Course Notification</b>",
+                             text: `aded new course ${req.body.course_title}`
+                             
+                           };
+                           transporter.sendMail(mailOptions, (error, info) => {
+                             if (error) {
+                               console.log("error", error);
+                               res.status(201).json({ status: 201, message: "Email not send" });
+                             } else {
+                               console.log("Email sent", info.response);
+                               res
+                                 .status(201)
+                                 .json({ status: 201, message: "Email sent succsfully" });
+                             }
+                           });
+                     }
+                     console.log("result",result)
+                   
+                 }
+                 });
+
+            }
+            catch{
+             console.log("catch")
+             res.send("not valid")
+           return
+
+            }
+     
+         
+         res.send("success")
+     }
         });
         
     }

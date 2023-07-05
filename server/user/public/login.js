@@ -4,7 +4,7 @@ var generate_token = require('../../authentication/generate_token')
 module.exports = function login(req , res){
     try{
         console.log(req.body)
-    connection.query("select * from user where email = '"+req.body.email+"'", function (err, result, fields) {
+        connection.query("select * from user where email = '"+req.body.email+"'", function (err, result, fields) {
         if (err) res.send(err);
         else{
             if(result.length===0){
