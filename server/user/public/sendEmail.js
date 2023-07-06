@@ -19,6 +19,12 @@ module.exports=function sendEmail  (req,res)  {
           return res.send(err);
         }
         else{
+          if(result.length===0){
+            return res.json({
+              message:"user not found"
+            })
+          }
+          
             console.log(result)
             const userId = result[0].user_id
             const token = jwt.sign({ userId }, process.env.JWT_SECRET_KEY, {
@@ -26,7 +32,7 @@ module.exports=function sendEmail  (req,res)  {
                 
               });
                // Construct the reset password link
-            const resetPasswordLink = `http://localhost:3000/ResetPassword/${userId}/${token}`;
+            const resetPasswordLink = `http://localhost:3002/ResetPassword/${userId}/${token}`;
             const transporter = nodemailer.createTransport({
                 service: "Gmail",
                 auth: {
@@ -52,7 +58,7 @@ module.exports=function sendEmail  (req,res)  {
                  
                   // Handle the error here, such as logging it or returning an error response
                 } else {
-                  console.log("Email sent:", info.response);
+                  
 
                   return res.status(200).json({
                     message:"Email sent succesfully"
@@ -61,6 +67,9 @@ module.exports=function sendEmail  (req,res)  {
                   // Handle the success case here, such as logging it or returning a success response
                 }
               });
+            
+          
+  
 
             
 

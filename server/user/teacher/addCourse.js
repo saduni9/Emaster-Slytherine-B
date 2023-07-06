@@ -58,7 +58,7 @@ module.exports = async function add_course(req , res){
                              }
                            });
                      }
-                     console.log("result",result)
+                     
                    
                  }
                  });

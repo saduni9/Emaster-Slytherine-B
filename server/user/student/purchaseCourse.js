@@ -5,7 +5,7 @@ var removeCart = require('./removeCart')
 module.exports = async function purchase_course(req , res){
     try{
         var validity = await validate_token(req , 2)
-        console.log(validity)
+       
         if (!validity.condition){
             res.send("not valid")
             return

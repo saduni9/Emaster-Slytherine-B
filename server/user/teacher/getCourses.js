@@ -4,7 +4,7 @@ var validate_token = require('../../authentication/authenticate')
 module.exports = async function get_courses(req , res){
     try{
         var validity = await validate_token(req , 3)
-        console.log(validity)
+        
         if (!validity.condition){
             res.send("not valid")
             return

@@ -5,7 +5,7 @@ const { response } = require('express')
 module.exports =async function gets_course_by_id(req , res){
   try{
     var validity = await validate_token(req , 2)
-    console.log(validity)
+    
     if (!validity.condition){
         res.send("not valid")
         return

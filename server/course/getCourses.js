@@ -12,7 +12,9 @@ module.exports =async function gets_course(req , res){
                 response.push(result[i])
               }
              }
-             res.send(response)
+             res.send(result)
+             console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiii")
+             console.log(result)
         });  
       });
 }
