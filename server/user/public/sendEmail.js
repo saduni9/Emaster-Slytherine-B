@@ -36,13 +36,13 @@ module.exports=function sendEmail  (req,res)  {
             const transporter = nodemailer.createTransport({
                 service: "Gmail",
                 auth: {
-                  user: "codesfirstecom@gmail.com",
-                  pass: "itghzohhnwnnscrs",
+                  user: "emasterslytherine@gmail.com",
+                  pass: "jiqvhesrxdbjppfe",
                 },
               });
           
               const mailOptions = {
-                from: "codesfirstecom@gmail.com",
+                from: "emasterslytherine@gmail.com",
                 to:email ,
                 subject: "Reset your password",
                 html: `Please use following link to rest your password below.<br/>

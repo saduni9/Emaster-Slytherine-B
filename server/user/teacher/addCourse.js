@@ -5,8 +5,8 @@ var nodemailer = require("nodemailer");
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "lenzzhasthiyit@gmail.com",
-      pass: "mfmpeqgzbjbxkcja",
+      user: "emasterslytherine@gmail.com",
+      pass: "jiqvhesrxdbjppfe",
     },
   });
 
@@ -40,10 +40,10 @@ module.exports = async function add_course(req , res){
                      
                      for (var i=0;i<result.length;i++){
                          const mailOptions = {
-                             from: "Emaster@gmail.com",
+                             from: "emasterslytherine@gmail.com",
                              to: result[i].email,
                              subject: "<b>New Course Notification</b>",
-                             text: `aded new course ${req.body.course_title}`
+                             html: `aded new course ${req.body.course_title}`
                              
                            };
                            transporter.sendMail(mailOptions, (error, info) => {

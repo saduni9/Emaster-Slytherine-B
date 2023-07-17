@@ -8,9 +8,11 @@ const addVideo = require('../user/teacher/addVideo')
 const getCourses = require('../user/teacher/getCourses')
 const get_earnings = require('../user/teacher/get_earnings')
 const getCourses_amount = require('../user/teacher/getCourses_amount')
-const { get } = require('./student_router')
+// const { get } = require('./student_router')
 
 router.post('/register' ,(req,res,next)=>{
+    console.log('registerrrrrrrrrrrrr')
+  
     register(req , res)
 })
 
@@ -42,3 +44,4 @@ router.get('/getCoursesAmount' ,(req,res,next)=>{
     getCourses_amount(req,res)
 })
 module.exports = router
+
