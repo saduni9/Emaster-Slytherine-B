@@ -15,7 +15,8 @@ module.exports= async function resetPassword(req,res){
       console.log(verifyToken);
       
       if ( verifyToken.userId) {
-       
+
+        // Update the user's password in the database
         connection.query("update user set password='"+new_password+"' where user_id = '"+id+"'", function (err, result, fields) {
             if (err) res.send(err);
              else{
@@ -26,6 +27,7 @@ module.exports= async function resetPassword(req,res){
         })
 
       } else {
+        // If the token is invalid or does not have a userId property, send an unauthorized response
         res.status(401).json({ message: "Invalid user or token" });
       }
     } catch (error) {

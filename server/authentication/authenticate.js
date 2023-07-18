@@ -20,7 +20,7 @@ const obj ={
         }
     ]
 }
-
+// Function to verify the token and check if the user is authorized
 function verifyToken(){
     const availability = new Promise((resolve) => {
        const token = jwt.decode(token)
@@ -37,7 +37,7 @@ function verifyToken(){
     })
     return availability 
 }
-
+// Function to check if the API number and user type combination is authorized
 async function check_authorization(api_no , user_type){
     var value = false
     console.log(api_no)
@@ -103,7 +103,7 @@ async function getDecode(req){
     })
     return response
 }
-
+// Main function to authenticate the user and check authorization for the API
 module.exports =async function authenticate(req , api_no){
     const response =await getDecode(req)
     console.log(response)

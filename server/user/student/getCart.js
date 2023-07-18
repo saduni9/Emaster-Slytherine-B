@@ -12,7 +12,7 @@ module.exports =async function get_cart_student(req , res){
     }
     catch{
         console.log("catch")
-        res.send("not valid")
+        res.send("not valid")//error durin validation process
         return
     }
     try{
@@ -24,21 +24,21 @@ module.exports =async function get_cart_student(req , res){
           let response = []
           for(let i in result){
             let course = {
-              course_id:result[i].course_id,
+              course_id:result[i].course_id,//assgns the result [i].course_id to the course_id property of variable course 
               cart_id:result[i].cart_id
             }
-            course_ids.push(course)
+            course_ids.push(course)//add the course object to the course_ids array
            }
           console.log(result2[0])
           for(let i in result2){
             console.log(result2[i].course_id)
             let index = course_ids.findIndex(item => item.course_id === result2[i].course_id) 
-            if(index!=-1){
+            if(index!=-1){//match is there in the course_ids array
               let resp = {
                 cart_id:course_ids[index].cart_id,
                 course:result2[i]
               }
-              response.push(resp)
+              response.push(resp)//add resp object to the response array 
             }
           }  
           connection.query("SELECT user_id , name FROM user", function (err, result3, fields) {

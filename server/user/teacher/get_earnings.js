@@ -16,7 +16,7 @@ module.exports = async function get_courses(req , res){
         return
     }
     try{
-        var sql = "SELECT * FROM course WHERE teacher_id = "+validity.userId
+        var sql = "SELECT * FROM course WHERE teacher_id = "+validity.userId//construct an SQL  quary string to retrive all courses for a specific techer
         connection.query(sql, function (err, result, fields) {
         if (err) res.send(err);
         else{
@@ -24,7 +24,7 @@ module.exports = async function get_courses(req , res){
             for(let i=0; i<result.length; i++){
                 course_ids.push(result[i].course_id)
             }
-            var sql = "SELECT * FROM student_course"
+            var sql = "SELECT * FROM student_course"//sql quary to retrive all student course 
             connection.query(sql, function (err, result2, fields) {
             if (err) res.send(err);
             else{

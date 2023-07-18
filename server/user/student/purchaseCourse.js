@@ -28,7 +28,7 @@ module.exports = async function purchase_course(req , res){
         return `${year}-${month}-${day}`
       }
       try{
-        var date = format(new Date)
+        var date = format(new Date)//new Date -->current date
         var sql = "SELECT * FROM cart WHERE course_id = "+req.params.courseId+" AND student_id = "+validity.userId
         connection.query(sql, function (err, result, fields){
         if (err) res.send(err);

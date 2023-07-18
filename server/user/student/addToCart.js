@@ -3,7 +3,8 @@ var validate_token = require('../../authentication/authenticate')
 
 module.exports = async function add_to_cart(req , res){
     try{
-        var validity = await validate_token(req , 2)
+        
+        var validity = await validate_token(req , 2)//Api no 2 is for student 
         
         if (!validity.condition){
             res.send("not valid")
@@ -11,7 +12,7 @@ module.exports = async function add_to_cart(req , res){
         }
     }
     catch{
-        console.log("catch")
+        console.log("catch")//indicate an error
         res.send("not valid")
         return
     }
@@ -23,7 +24,7 @@ module.exports = async function add_to_cart(req , res){
         res.send("success")
 }
 catch{
-    console.log("catch")
+    console.log("catch")//indicate an error
     res.send("not valid")
     return
 }

@@ -1,7 +1,7 @@
 var connection = require('../../service/connection')
 var validate_token = require('../../authentication/authenticate')
 
-module.exports = async function remove_student(req , res){
+module.exports = async function remove_student(req , res){//this should be remove cart
     try{
         var validity = await validate_token(req , 2)
         

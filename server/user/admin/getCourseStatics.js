@@ -16,7 +16,7 @@ module.exports = async function add_course(req , res){
         return
     }
     try{
-        var sql = "SELECT * FROM student_course WHERE course_id = "+req.params.courseId
+        var sql = "SELECT * FROM student_course WHERE course_id = "+req.params.courseId//get 
         connection.query(sql, function (err, result, fields) {
         if (err) res.send(err);
         else{
